@@ -1,15 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weather Report</title>
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles/index.css">
-    <script defer src="./src/index.js"></script>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Weather Report</title>
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles/index.css">
+<script defer src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script defer src="src/index.js"></script>
 </head>
 <body>
+<div class="app-shell">
+
+<nav class="top-bar">
+<div class="search-group">
+<label for="cityNameInput" class="sr-only">City Name</label>
+<input
+id="cityNameInput"
+type="text"
+placeholder="Search city..."
+value="Seattle"
+autocomplete="off"
+>
+<button id="cityNameReset" class="btn-ghost" type="button">Reset</button>
+</div>
+<button id="currentTempButton" class="btn-sync" type="button">
+Get current temperature
+</button>
+</nav>
+
+<main id="gardenContent" class="hero-stage">
+<header class="location-header">
+<p class="eyebrow">CURRENT CONDITIONS</p>
+<h1 id="headerCityName">Seattle</h1>
+</header>
+
+<div class="temp-hero">
+<button id="decreaseTempControl" class="stepper-btn" type="button" aria-label="Decrease temperature">−</button>
+<div class="temp-display">
+<span id="tempValue"></span><span class="degree-symbol">°</span>
+</div>
+<button id="increaseTempControl" class="stepper-btn" type="button" aria-label="Increase temperature">+</button>
+</div>
+<div class="unit-row">
+<button id="unitToggleBtn" class="unit-toggle" type="button" aria-label="Toggle Fahrenheit and Celsius">
+<span class="unit-option active" data-unit="F">F</span>
+<span class="unit-option" data-unit="C">C</span>
+</button>
+</div>
+
+
+<div class="atmosphere-strip">
+<div class="atmosphere-item">
+<span class="strip-label">ATMOSPHERE</span>
+<div id="sky" class="strip-value"></div>
+</div>
+<div class="divider"></div>
+<div class="atmosphere-item">
+<span class="strip-label">TERRAIN</span>
+<div id="landscape" class="strip-value"></div>
+</div>
+</div>
+</main>
+
+
+<section class="glass-panel">
+<div class="panel-row">
+<div>
+<h2>Current sky condition</h2>
+</div>
+<label for="skySelect" class="sr-only">Select sky type</label>
+<select id="skySelect" class="glass-select">
+<option value="sunny">Sunny</option>
+<option value="cloudy">Cloudy</option>
+<option value="rainy">Rainy</option>
+<option value="snowy">Snowy</option>
+</select>
+</div>
+</section>
+</div>
 </body>
 </html>
+
